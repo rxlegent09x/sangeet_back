@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demox</title>
+</head>
+<body>
+    <!-- <p id="x">Loading...</p>
+    <br><br><br><br><br>
+    <input type="file" id="music" name="music"/>
+    <button onclick="upload()" >Upload</button>
+    <p id="y">Uploading...</p> -->
+
+
+    
+
+<script>
+
+
+
+
+async function dem(){
+    const res = await fetch("http://localhost/sangeet/sangeet_back/");
+    const data = await res.json();
+        x.innerHTML = JSON.stringify(data);
+}
+
+async function upload(){
+    const music  = document.getElementById("music");
+    const formdata = new FormData();
+    formdata.append("music",music.files[0]);
+    formdata.append("namex","Rx-LegenT_09x");
+    console.log(music.files[0]);
+    const res = await fetch("http://localhost/sangeet/sangeet_back/song_upload/index.php",
+    {
+        "method": "POST",
+        "body" :formdata
+    });
+    const data = await res.json();
+    console.log(data);
+    y.innerHTML = JSON.stringify(data);
+    dem();
+}
+
+
+
+</script>
+
+</body>
+</html>
